@@ -1,0 +1,16 @@
+{
+  "name": "smoking",
+  "version": "1.0.0",
+  "description": "logging temps from a digital thermometer",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^7.4.0",
+    "ws": "^7.4.5"
+  }
+}
