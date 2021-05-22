@@ -5,12 +5,10 @@ let myChart = new Chart(ctx);
 
 const buildChart = () => {
   myChart.destroy();
-  const labels = tempData.map(point => point.timestamp);
-
   myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels,
+      labels: tempData.map(point => point.timestamp * 1000),
       datasets: [
         {
           label: 'Food Temp',
@@ -28,6 +26,16 @@ const buildChart = () => {
     },
     options: {
       responsive: true,
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            displayFormats: {
+              hour: 'HH mm:ss'
+            }
+          },
+        }
+      }
     }
   });
 }
@@ -43,44 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   socket.onmessage = ev => {
-    console.log('HEY YOU GOT A MESSAGE', ev.data);
     tempData = tempData.concat(JSON.parse(ev.data));
     buildChart();
   }
   
 });
-
-
-
-/// OLD SHIT
-// scales: {
-      //   x: {
-      //     type: 'time',
-      //     title: {
-      //       display: true,
-      //       text: 'Time Time',
-      //     },
-      //     time: {
-      //       unit: 'minute'
-      //     }
-          // time: {
-          //   unit: 'hour',
-          //   min: labels[0],
-          //   max: labels[labels.length - 1],
-          //   displayFormats: {
-          //     hour: 'hh',
-          //   },
-          // }
-        // },
-      //   xAxes: [{
-      //     title: 'Time Time',
-      //     type: 'time',
-      //     time: {
-      //       format: 'hh',
-      //       unit: 'hour',
-      //       parser: 'hh:mm',
-      //       displayFormats: {
-      //         hour: 'hh'
-      //       }
-      //     },
-      //  }],

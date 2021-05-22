@@ -35,8 +35,11 @@ const processData = data => {
   console.log(`BBQ Temp: ${bbqTemp}`);
   console.log('===================================');
 
-  LogData.logTempData(foodTemp, bbqTemp);
-  newTemperatureReading({ food: foodTemp, bbq: bbqTemp, timestamp: Date.now() })
+  // sometimes the unit will emit zeros for temps
+  if (foodTemp !== 0 && bbqTemp !== 0) {
+    const { timestamp } = LogData.logTempData(foodTemp, bbqTemp);
+    newTemperatureReading({ food: foodTemp, bbq: bbqTemp, timestamp });
+  }
 };
 
 export default processData;
