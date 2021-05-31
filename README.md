@@ -6,6 +6,8 @@ I started setting up the SDR and then discovered the [rtl_433](https://github.co
 
 This just sets up a dumb webpage that displays a ChartJS line graph for the temp of the bbq and food over time.  It then autoupdates current temps over websockets.
 
+![example chart](example_chart.png)
+
 ### Setting up your SDR
 I have a NooElec NESDR Mini. I followed [this guide](https://www.nooelec.com/store/downloads/dl/file/id/72/product/294/nesdr_installation_manual_for_ubuntu.pdf).  You should really set up the user so you don't have to `sudo`.
 

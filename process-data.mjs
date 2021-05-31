@@ -5,11 +5,12 @@ const FOOD_LINE = 'Temperature 1 (Food):';
 const BBQ_LINE = 'Temperature 2 (Barbecue):';
 const TEMP_DEFAULT = '320.0';
 
+
 const convertTemp = temp => {
-  if (temp === TEMP_DEFAULT) {
+  if (temp === TEMP_DEFAULT || Number(temp) === 0) {
     return 0;
   }
-  return ((Number(temp) * 9/5) + 32);
+  return Math.round((Number(temp) * 9/5) + 32);
 }
   
 const processData = data => {
